@@ -1,0 +1,10 @@
+server:
+  port: 8003
+spring:
+  application:
+    # 服务别名---注册zookeeper到注册中心的名称
+    name: cloud-provider-payment
+  cloud:
+    zookeeper:
+      # zookeeper服务器的地址
+      connect-string: localhost:2181
