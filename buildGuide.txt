@@ -1,0 +1,12 @@
+创建Maven聚合工程
+1.先创建project：new->project->maven->maven-archetype-site
+2.编写父pom.xml
+    properties-管理统一jar版本
+    dependencyManagement-锁定依赖的版本
+    build-添加maven打包插件
+    repositories-添加第三方阿里云maven私服
+3.在project下添加子模块module：new->module->maven
+    修改子pom.xml
+    添加application.yml
+    添加主启动类
+    写自己的业务类

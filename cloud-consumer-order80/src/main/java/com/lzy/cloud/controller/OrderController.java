@@ -3,9 +3,11 @@ package com.lzy.cloud.controller;
 import com.lzy.cloud.entities.CommonResult;
 import com.lzy.cloud.entities.Payment;
 import com.lzy.cloud.lb.LoadBalancer;
+import com.lzy.rule.MySelfRule;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +24,7 @@ import java.util.List;
  */
 @RestController
 @Slf4j
+@RibbonClient(name = "CLOUD-PAYMENT-SERVICE",configuration = MySelfRule.class)//配置CLOUD-PAYMENT-SERVICE服务调用采用自定义的规则。
 public class OrderController {
     /**
      * 通过直接RPC远程调用
