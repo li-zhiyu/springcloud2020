@@ -21,10 +21,11 @@ public class MyLB implements LoadBalancer {
         int next;
         do {
             current = this.atomicInteger.get();
+            int i = atomicInteger.incrementAndGet();
             // 超过最大值,为0,重新计数 2147483647 Integer.MAX_VALUE
-            next = current >= 2147483647 ? 0 : current + 1;
+            next = current >= Integer.MAX_VALUE ? 0 : current + 1;
             // 自旋锁
-        } while (!atomicInteger.compareAndSet(current, next));
+        } while (!atomicInteger.compareAndSet(current, next));//如果当前值等于期望值表示没有其他线程修改过，则更新；否则重新取值，重新计算，重新去比较
         System.out.println("****第几次访问,次数next:" + next);
         return next;
     }
