@@ -1,5 +1,6 @@
 package com.lzy.cloud.controller;
 
+import cn.hutool.core.util.IdUtil;
 import com.lzy.cloud.service.PaymentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -48,4 +49,14 @@ public class PaymentController {
         return result;
 
     }
+
+    @GetMapping("/payment/hystrix/circuitbreaker/{id}")
+    public String paymentInfo_CircuitBreaker(@PathVariable("id") Integer id) {
+        if (id<0){
+            throw new RuntimeException("*****id不能为负数");
+        }
+        return Thread.currentThread().getName()+"，请求序列号："+ IdUtil.simpleUUID();
+
+    }
+
 }
