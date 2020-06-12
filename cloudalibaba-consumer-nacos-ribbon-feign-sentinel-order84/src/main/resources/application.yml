@@ -1,0 +1,23 @@
+server:
+  port: 84
+
+spring:
+  application:
+    name: all-consumer-order
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 192.168.11.86:8858
+        port: 8719
+    nacos:
+      discovery:
+        server-addr: 192.168.11.86:8888
+
+feign:
+  sentinel:
+    enabled: true
+
+nacos-provider-payment:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule
+

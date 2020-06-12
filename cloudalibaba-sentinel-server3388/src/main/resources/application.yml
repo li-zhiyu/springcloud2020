@@ -8,3 +8,11 @@ spring:
       transport:
         dashboard: 192.168.11.86:8858
         port: 8719
+      datasource:
+        ds1:
+          nacos:
+            server-addr: 192.168.11.86:8888
+            dataId: ${spring.application.name}
+            grounpId: DEFAULT_GROUP
+            data-type: json
+            rule-type: flow
