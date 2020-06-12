@@ -1,0 +1,10 @@
+server:
+  port: 3388
+spring:
+  application:
+    name: sentinel-service
+  cloud:
+    sentinel:
+      transport:
+        dashboard: 192.168.11.86:8858
+        port: 8719

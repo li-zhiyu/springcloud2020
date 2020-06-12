@@ -1,0 +1,11 @@
+server:
+  port: 3377
+spring:
+  application:
+    name: nacos-config
+  cloud:
+    nacos:
+      config:
+        server-addr: 192.168.11.86:8888
+        file-extension: yml
+        group: TEST_GROUP
